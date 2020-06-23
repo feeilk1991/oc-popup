@@ -22,8 +22,12 @@ class Reports extends Controller
 
         $this->addCss('/plugins/indikator/popup/assets/css/statistics.css');
 
-        $this->vars['campaigns'] = $this->getCampaigns();
-        $this->vars['count']     = Campaigns::count();
+        $campaigns = Campaigns::all();
+
+        if (count($campaigns) > 0) {
+            $this->vars['campaigns'] = $this->getCampaigns();
+            $this->vars['count']     = Campaigns::count();
+        }
     }
 
     public function getCampaigns()
