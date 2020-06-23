@@ -1,12 +1,15 @@
 <?php Block::put('breadcrumb') ?>
+    <?php if (isset($count)): ?>
     <ul>
         <li><?= e(trans($this->pageTitle)) ?></li>
         <li>
             <span class="text-info"><strong><?= $count ?></strong> <?= e(trans_choice('indikator.popup::lang.report.campaigns', $count)) ?></span>
         </li>
     </ul>
+    <?php endif; ?>
 <?php Block::endPut() ?>
 
+<?php if (isset($count)): ?>
 <div class="row">
     <div class="col-md-12">
         <?php if ($count == 0): ?>
@@ -56,3 +59,8 @@
         <?php endforeach; ?>
     </div>
 </div>
+<?php else: ?>
+    <div class="report-container">
+        <h3><?= e(trans('indikator.popup::lang.plugin.no_data')) ?></h3>
+    </div>
+<?php endif; ?>
